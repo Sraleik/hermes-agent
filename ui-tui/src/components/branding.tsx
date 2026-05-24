@@ -96,8 +96,9 @@ export function Banner({ maxWidth, t }: { maxWidth?: number; t: Theme }) {
   if (cols >= logoW + 2) {
     return (
       <Box flexDirection="column" marginBottom={1}>
-        <ArtLines lines={logoLines} />
-        <Text />
+        <Box paddingY={1}>
+          <ArtLines lines={logoLines} />
+        </Box>
         <Text color={t.color.muted} wrap="truncate-end">
           {t.brand.icon} {TAG_FULL}
         </Text>
@@ -282,8 +283,9 @@ export function SessionPanel({ info, maxWidth, sid, t }: SessionPanelProps) {
     <Box borderColor={t.color.border} borderStyle="round" marginBottom={1} paddingX={2} paddingY={1}>
       {wide && (
         <Box flexDirection="column" marginRight={2} width={leftW}>
-          <ArtLines lines={heroLines} />
-          <Text />
+          <Box paddingY={1}>
+            <ArtLines lines={heroLines} />
+          </Box>
 
           <Text color={t.color.accent}>
             {info.model.split('/').pop()}
