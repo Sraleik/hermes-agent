@@ -303,34 +303,6 @@ export function SessionPanel({ info, maxWidth, sid, t }: SessionPanelProps) {
       )}
 
       <Box flexDirection="column" width={w}>
-        {wide ? (
-          <Box justifyContent="center" marginBottom={1}>
-            <Text bold color={t.color.primary}>
-              {t.brand.name}
-              {info.version ? ` v${info.version}` : ''}
-              {info.release_date ? ` (${info.release_date})` : ''}
-            </Text>
-          </Box>
-        ) : (
-          // Narrow layout hides the hero column; surface model/cwd/session
-          // here so they aren't lost.
-          <Box flexDirection="column" marginBottom={1}>
-            <Text color={t.color.accent} wrap="truncate-end">
-              {info.model.split('/').pop()}
-              <Text color={t.color.muted}> · Nous Research</Text>
-            </Text>
-            <Text color={t.color.muted} wrap="truncate-end">
-              {info.cwd || process.cwd()}
-            </Text>
-            {sid && (
-              <Text wrap="truncate-end">
-                <Text color={t.color.sessionLabel}>Session: </Text>
-                <Text color={t.color.sessionBorder}>{sid}</Text>
-              </Text>
-            )}
-          </Box>
-        )}
-
         {/* ── Tools (expanded by default) ── */}
         <Box flexDirection="column" marginTop={1}>
           <CollapseToggle
@@ -385,14 +357,6 @@ export function SessionPanel({ info, maxWidth, sid, t }: SessionPanelProps) {
         )}
 
         <Text />
-
-        <Text color={t.color.text}>
-          {toolsTotal} tools{' · '}
-          {skillsTotal} skills
-          {info.mcp_servers?.length ? ` · ${info.mcp_servers.length} MCP` : ''}
-          {' · '}
-          <Text color={t.color.muted}>/help for commands</Text>
-        </Text>
 
         {typeof info.update_behind === 'number' && info.update_behind > 0 && (
           <Text bold color={t.color.warn}>
